@@ -1,12 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import Cart from './components/Navbar/Cart/Cart';
+import Contador from './components/Contador/Contador.jsx'
 
 function App() {
   return (//el return  devuelve 1 cosa sola, por ejemplo el div q incluye el h1
     <div className="App">
       <Navbar nombreDeLaTienda="Teclados"/>
-      <Cart/>
+      <Contador/>
     </div>
   );
 }
