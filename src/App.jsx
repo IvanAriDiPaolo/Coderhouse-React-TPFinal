@@ -1,12 +1,57 @@
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import './App.css'; 
 import Navbar from './components/Navbar/Navbar';
-import Contador from './components/Contador/Contador.jsx'
+import Contador from './components/Contador/Contador.jsx';
+import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 
-function App() {
-  return (//el return  devuelve 1 cosa sola, por ejemplo el div q incluye el h1
+const App = () => {
+
+  const[pokemonIngresado, setPokemonIngresado] = useState("");
+
+  const[imagenPokemon, setImagenPokemon] = useState("");
+
+  const[busqueda, setBusqueda] = useState("");
+
+  const url = 'https://pokeapi.co/api/v2/pokemon/';
+
+  const getPoke = () => {
+    fetch(url + pokemonIngresado)
+      .then(response => response.json())
+      .then(data => {
+        if (data.sprites){
+          setImagenPokemon(data.sprites.front_default)
+        }
+      })
+      .catch(
+        setImagenPokemon(
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png'
+        )
+      );
+  };
+
+useEffect(()=>{
+  getPoke();
+}, [busqueda]);
+
+/*Se ejecuta cada vez que se monta o se realiza un cambio en el array de dependencia*/
+
+
+const handleInput = (evento) => setPokemonIngresado(evento.target.value)
+
+  return (
     <div className="App">
       <Navbar nombreDeLaTienda="Teclados"/>
       <Contador/>
+      <h1>Pokemon</h1>
+      <img src={imagenPokemon}/>
+      <form onSubmit={(evento) => {
+        evento.preventDefault();
+        setBusqueda(pokemonIngresado);
+      }} 
+      >
+        <input type="text" onChange={handleInput}/>
+        <ItemListContainer/>
+      </form>
     </div>
   );
 }

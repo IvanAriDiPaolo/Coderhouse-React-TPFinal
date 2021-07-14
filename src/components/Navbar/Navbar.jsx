@@ -1,6 +1,5 @@
 import React from "react";
 import Cart from './Cart/Cart';
-import './styles/Navbar.scss';
 
 const Navbar = (props) => {
     return (
