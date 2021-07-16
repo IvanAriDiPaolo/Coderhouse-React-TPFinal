@@ -8,7 +8,7 @@ export const Item = ({nombre, descripcion, precio}) => {
         <article className="Item">
             <h4>{nombre}</h4>
             <p>{descripcion}</p>
-            <p>Precio: ${precio}</p>
+            <p>Precio.- ${precio}</p>
         </article>
     )
 }
