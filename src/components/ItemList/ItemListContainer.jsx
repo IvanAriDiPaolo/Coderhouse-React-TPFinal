@@ -1,9 +1,11 @@
-import React from "react"
+import React,{useEffect, useState} from "react"
 import {Item} from '../Item/Item';
 const ItemListContainer = () => {
 
-    const productos = [{
-        id : 1,
+    const[productos, setProductos] = useState([])
+
+    const arrayProductos = [{
+        id : 1, 
         nombre:"remera",
         descripcion: "roja",
         precio: 1600
@@ -28,15 +30,15 @@ const ItemListContainer = () => {
     }]
 
     const cargarData = () => {
-        new Promise((resolve,reject) => {
+        return new Promise((resolve,reject) => {
             setTimeout(()=>{
-                resolve(productos);
+                resolve( arrayProductos );
             }, 4000);
         });
     };
 
-    // cargarData(productos)
-    //     .then((resultado) => console.log(resultado))
+    cargarData()
+        .then((resultado) => setProductos( resultado) )
 
     return(
         <section className="ilc">
@@ -44,7 +46,7 @@ const ItemListContainer = () => {
             <Item {...prod2}/>
             <Item {...prod3}/>
             <Item {...prod4}/> */}
-            {productos.map((prod) => <Item key={prod.id} {...prod}/>)}
+            {arrayProductos.map((prod) => <Item key={prod.id} {...prod}/>)}
         </section>
     );
 };
