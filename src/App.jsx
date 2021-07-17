@@ -1,57 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css'; 
 import Navbar from './components/Navbar/Navbar';
 import Contador from './components/Contador/Contador.jsx';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
+import ItemMostrado from './components/Item/ItemMostrado'
 
 const App = () => {
 
-  const[pokemonIngresado, setPokemonIngresado] = useState("");
-
-  const[imagenPokemon, setImagenPokemon] = useState("");
-
-  const[busqueda, setBusqueda] = useState("");
-
-  const url = 'https://pokeapi.co/api/v2/pokemon/';
-
-  const getPoke = () => {
-    fetch(url + pokemonIngresado)
-      .then(response => response.json())
-      .then(data => {
-        if (data.sprites){
-          setImagenPokemon(data.sprites.front_default)
-        }
-      })
-      .catch(
-        setImagenPokemon(
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png'
-        )
-      );
-  };
-
-useEffect(()=>{
-  getPoke();
-}, [busqueda]);
-
-/*Se ejecuta cada vez que se monta o se realiza un cambio en el array de dependencia*/
-
-
-const handleInput = (evento) => setPokemonIngresado(evento.target.value)
-
   return (
     <div className="App">
-      <Navbar nombreDeLaTienda="Teclados"/>
-      <Contador/>
-      <h1>Pokemon</h1>
-      <img src={imagenPokemon}/>
-      <form onSubmit={(evento) => {
-        evento.preventDefault();
-        setBusqueda(pokemonIngresado);
-      }} 
-      >
-        <input type="text" onChange={handleInput}/>
-        <ItemListContainer/>
-      </form>
+      <BrowserRouter>
+        <Navbar nombreDeLaTienda="Teclados"/>
+        <Contador/>
+        <Switch>
+          <Route exact path='/'>
+            <strong>Este es el home, bienvenido a la página.</strong>
+          </Route>
+          <Route path="/Catalogo">
+            <ItemListContainer/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

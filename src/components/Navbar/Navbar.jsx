@@ -1,17 +1,26 @@
 import React from "react";
 import Cart from './Cart/Cart';
+import {Link} from 'react-router-dom';
 
 const Navbar = (props) => {
     return (
         <nav className="NavBar">
             <div className="NavBarDiv">
                 <div className="DivTienda">
-                    <li className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</li>
-                </div>
+                    <Link to='/'>
+                        <li className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</li>
+                    </Link>
+                    </div>
                 <div className="DivOtros">
-                    <p className="NavBarUlLi">Nosotros</p>
-                    <p className="NavBarUlLi">Catálogo</p>
-                    <p className="NavBarUlLi">Contacto</p>
+                    <Link to='Nosotros'>
+                        <p className="NavBarUlLi">Nosotros</p>
+                    </Link>
+                    <Link to='Catalogo'>
+                        <p className="NavBarUlLi">Catálogo</p>
+                    </Link>
+                    <Link to='Nosotros'>
+                        <p className="NavBarUlLi">Contacto</p>
+                    </Link>
                     <Cart/>
                 </div>
             </div>

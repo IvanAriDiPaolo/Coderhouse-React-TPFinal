@@ -1,8 +1,13 @@
 import React,{useEffect, useState} from "react"
 import {Item} from '../Item/Item';
+import {useParams} from 'react-router';
+
 const ItemListContainer = () => {
 
     const[productos, setProductos] = useState([])
+
+
+const {id} = useParams;
 
     const arrayProductos = [{
         id : 1, 
@@ -37,8 +42,11 @@ const ItemListContainer = () => {
         });
     };
 
-    cargarData()
-        .then((resultado) => setProductos( resultado) )
+
+    useEffect(()=>{
+        cargarData()
+            .then((resultado) => setProductos(resultado))
+    }, [arrayProductos]);
 
     return(
         <section className="ilc">
