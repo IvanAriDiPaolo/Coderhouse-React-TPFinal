@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Contador from './components/Contador/Contador.jsx';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
-import ItemMostrado from './components/Item/ItemMostrado'
+import ItemDetailContainer from './components/Item/ItemDetailContainer.jsx';
 
 const App = () => {
 
@@ -19,6 +19,9 @@ const App = () => {
           </Route>
           <Route path="/Catalogo">
             <ItemListContainer/>
+          </Route>
+          <Route path="/Catalogo/">
+            <ItemDetailContainer/>
           </Route>
         </Switch>
       </BrowserRouter>

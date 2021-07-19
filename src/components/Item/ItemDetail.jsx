@@ -1,10 +1,11 @@
 import React from 'react'
 
-const remera = () => {
+const ItemDetail = () => {
     return (
         <div>
-            <p>Soy Ruta 3</p>
+            
         </div>
     )
 }
-export default remera;
+
+export default ItemDetail
