@@ -15,10 +15,9 @@ function Contador() {
     };
     return(
         <div className='Contador'>
-            <button onClick={handleButtonp}> Clickear + </button>
-            <button onClick={handleButtonl}> Clickear - </button>
-            <h2>Click dados: {state}</h2>
-            <button onClick={reset}>reset</button>
+            <button onClick={handleButtonl}> - </button>
+            <h2>Cantidad: {state}</h2>
+            <button onClick={handleButtonp}> + </button>
         </div>
     );
 };

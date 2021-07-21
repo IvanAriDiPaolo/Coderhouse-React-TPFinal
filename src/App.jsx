@@ -2,25 +2,24 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css'; 
 import Navbar from './components/Navbar/Navbar';
-import Contador from './components/Contador/Contador.jsx';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
-import ItemDetailContainer from './components/Item/ItemDetailContainer.jsx';
+import ItemDetailContainer from './components/Item/ItemDetailContainer';
 
 const App = () => {
-
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar nombreDeLaTienda="Teclados"/>
-        <Contador/>
         <Switch>
           <Route exact path='/'>
             <strong>Este es el home, bienvenido a la página.</strong>
+            <br></br>
+            <strong>Todavía no tiene mucho estilado, pero tranquilo que ya lo va a tener!.</strong>
           </Route>
-          <Route path="/Catalogo">
+          <Route exact path="/Catalogo">
             <ItemListContainer/>
           </Route>
-          <Route path="/Catalogo/">
+          <Route exact path="/Catalogo/:id">
             <ItemDetailContainer/>
           </Route>
         </Switch>

@@ -1,41 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect}  from 'react';
 import {useParams} from 'react-router-dom';
-import ItemDetail from './ItemDetail'
+import importProductos from '../../json/productos.json'
+import ItemDetail from './ItemDetail';
 
-const ItemDetailContainer = () => {
+function ItemDetailContainer() {
+    
+    const arrayProductos = importProductos;
 
-    const arrayProductos = [{
-        id : '1', 
-        nombre:"remera",
-        descripcion: "roja",
-        precio: 1600
-    },
-    {
-        id : '2',
-        nombre:"Cinturon",
-        descripcion: "Cuero",
-        precio: 313
-    },
-    {   
-        id : '3',
-        nombre:"Anteojos",
-        descripcion: "Grises",
-        precio: 2222
-    },
-    {
-        id : '4',
-        nombre:"Zapatos",
-        descripcion: "Negros",
-        precaao: 4144
-    }];
+    const [itemToDisplay, setItemToDisplay] = useState();
+    
+    const{id: idParams} = useParams();
 
-    const {id: idParams} = useParams();
+    const getSelectedItems = () => {
+        return new Promise((resolve) => {
+            setTimeout(()=> {
+                resolve(arrayProductos.find((Item) => Item.id.toString() === idParams));
+            }, 4000);
+        });
+    };
 
-    return (
-        <div>
-            <p>{idParams}</p>            
-        </div>
-    )
+    useEffect(() => {
+        setItemToDisplay();
+        getSelectedItems().then((result) => setItemToDisplay(result));
+    }, [idParams]);
+
+    return <ItemDetail itemToDisplay={itemToDisplay}/>
 }
 
 export default ItemDetailContainer

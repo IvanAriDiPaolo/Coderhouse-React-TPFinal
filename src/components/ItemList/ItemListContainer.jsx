@@ -1,47 +1,21 @@
 import React,{useEffect, useState} from "react"
 import {Item} from '../Item/Item';
-import {useParams} from 'react-router';
+import importProductos from '../../json/productos.json'
 
 const ItemListContainer = () => {
 
     const[productos, setProductos] = useState([])
 
+    const arrayProductos = importProductos;
 
-const {id} = useParams;
-
-    const arrayProductos = [{
-        id : '1', 
-        nombre:"remera",
-        descripcion: "roja",
-        precio: 1600
-    },
-    {
-        id : '2',
-        nombre:"Cinturon",
-        descripcion: "Cuero",
-        precio: 313
-    },
-    {
-        id : '3',
-        nombre:"Anteojos",
-        descripcion: "Grises",
-        precio: 2222
-    },
-    {
-        id : '4',
-        nombre:"Zapatos",
-        descripcion: "Negros",
-        precaao: 4144
-    }]
 
     const cargarData = () => {
         return new Promise((resolve,reject) => {
             setTimeout(()=>{
                 resolve( arrayProductos );
-            }, 4000);
+            }, 1000);
         });
     };
-
 
     useEffect(()=>{
         cargarData()
@@ -54,7 +28,7 @@ const {id} = useParams;
             <Item {...prod2}/>
             <Item {...prod3}/>
             <Item {...prod4}/> */}
-            {arrayProductos.map((prod) => <Item key={prod.id} {...prod}/>)}
+            {productos.map((prod) => <Item item={prod.Item} key={prod.id} {...prod}/>)}
         </section>
     );
 };

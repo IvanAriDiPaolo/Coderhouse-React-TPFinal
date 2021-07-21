@@ -1,4 +1,11 @@
-.Contador{
-    display: flex;
-    justify-content: center;
+.Contador {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  h2 {
+    widows: 80%;
+  }
+  button {
+    width: 10%;
+  }
 }

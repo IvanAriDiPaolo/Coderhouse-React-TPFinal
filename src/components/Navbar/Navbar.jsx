@@ -12,13 +12,13 @@ const Navbar = (props) => {
                     </Link>
                     </div>
                 <div className="DivOtros">
-                    <Link to='Nosotros'>
+                    <Link to='/Nosotros'>
                         <p className="NavBarUlLi">Nosotros</p>
                     </Link>
-                    <Link to='catalogo'>
+                    <Link to='/Catalogo'>
                         <p className="NavBarUlLi">Catálogo</p>
                     </Link>
-                    <Link to='Nosotros'>
+                    <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
                     <Cart/>

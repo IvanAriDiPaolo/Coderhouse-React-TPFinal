@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-
+import Contador from '../Contador/Contador';
 export const Item = (props) => {
 
     const {nombre, descripcion, precio, id} = props;
@@ -13,6 +13,7 @@ export const Item = (props) => {
                 <p>{descripcion}</p>
                 <p>Precio: ${precio}</p>
             </Link>
+            <Contador/>
         </article>
     )
 }
