@@ -7,7 +7,7 @@ export const Item = (props) => {
 
     return (
         <article className="Item">
-            <Link to={`/Catalogo/${id}`}>
+            <Link to={`/Item/${id}`}>
                 <img src="https://via.placeholder.com/150" alt="Si" />
                 <h4>{nombre}</h4>
                 <p>{descripcion}</p>

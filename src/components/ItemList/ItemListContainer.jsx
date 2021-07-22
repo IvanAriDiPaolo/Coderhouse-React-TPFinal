@@ -28,7 +28,7 @@ const ItemListContainer = () => {
             <Item {...prod2}/>
             <Item {...prod3}/>
             <Item {...prod4}/> */}
-            {productos.map((prod) => <Item item={prod.Item} key={prod.id} {...prod}/>)}
+            {productos.map((prod) => <Item Item={prod.Item} key={prod.id} {...prod}/>)}
         </section>
     );
 };

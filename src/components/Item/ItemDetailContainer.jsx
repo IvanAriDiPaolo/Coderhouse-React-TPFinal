@@ -1,6 +1,6 @@
-import React, {useState, useEffect}  from 'react';
-import {useParams} from 'react-router-dom';
-import importProductos from '../../json/productos.json'
+import React,{useState, useEffect}  from 'react';
+import { useParams } from 'react-router-dom';
+import importProductos from '../../json/productos.json';
 import ItemDetail from './ItemDetail';
 
 function ItemDetailContainer() {
@@ -15,7 +15,7 @@ function ItemDetailContainer() {
         return new Promise((resolve) => {
             setTimeout(()=> {
                 resolve(arrayProductos.find((Item) => Item.id.toString() === idParams));
-            }, 4000);
+            }, 1000);
         });
     };
 
@@ -24,7 +24,9 @@ function ItemDetailContainer() {
         getSelectedItems().then((result) => setItemToDisplay(result));
     }, [idParams]);
 
-    return <ItemDetail itemToDisplay={itemToDisplay}/>
+    return <>
+    {itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>}
+    </>;
 }
 
 export default ItemDetailContainer
