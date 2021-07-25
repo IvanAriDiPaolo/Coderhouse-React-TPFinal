@@ -14,8 +14,10 @@ function ItemDetailContainer() {
     const{id: idParams} = useParams();
     
     const obtenerProductos = () => {
+
         const items = database
             .collection("Catalogo")
+
         items.get().then(((query) =>
         setItemsEnStock(
             query.docs.map((doc) => {
@@ -23,44 +25,47 @@ function ItemDetailContainer() {
             })
             )
             ))
+            /*
+            return new Promise((resolve,reject) => {
+                setTimeout(()=>{
+                    resolve( obtenerProductos );
+                }, 1000);
+            });*/
         }
-
-        useEffect(() => {
-            obtenerProductos()
-            setItemToDisplay()
-            getSelectedItems()
-                .then((result) => setItemToDisplay(result));
-        }, [idParams]);
-        
-    const getSelectedItems = () => {
-        return new Promise((resolve) => {
-            setTimeout(()=> {
-                resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams));
-            }, 3000);
-        });
+        const getSelectedItems = () => {
+            return new Promise((resolve) => {
+                setTimeout(()=> {
+                    resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams));
+                }, 3000);
+            });
     };
     
-
+    useEffect(() => {
+        obtenerProductos()
+        setItemToDisplay()
+        getSelectedItems()
+            .then((result) => setItemToDisplay(result));
+    }, [idParams]);
+ 
     useEffect(() => {
         setLoading(true)
         getSelectedItems()
         .then(res => {
-                getSelectedItems(res)
-            })
-            .catch(err=>{
+            getSelectedItems(res)
+        })
+        .catch(err=>{
                 console.log(err)
-            })
-            .finally(()=>{
-                setLoading(false)
-            })
-    }, [])
+        })
+        .finally(()=>{
+            setLoading(false)
+        })
+        }, [])
 
     return (
     <>{
         loading ? <Loader/>
-            :
+        :
         itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>
-        
     }</>
     )
 }

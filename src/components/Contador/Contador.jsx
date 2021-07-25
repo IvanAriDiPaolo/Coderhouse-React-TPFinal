@@ -14,7 +14,7 @@ function Contador() {
         setState(0)
     };
     return(
-        <div className='Contador'>
+        <div className='Contador' cant={state}>
             <button onClick={handleButtonl}> - </button>
             <h2>Cantidad: {state}</h2>
             <button onClick={handleButtonp}> + </button>
