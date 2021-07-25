@@ -1,32 +1,68 @@
 import React,{useState, useEffect}  from 'react';
 import { useParams } from 'react-router-dom';
-import importProductos from '../../json/productos.json';
 import ItemDetail from './ItemDetail';
+import Loader from '../Loader/Loader';
+import {database} from '../../firebase/firebase';
 
 function ItemDetailContainer() {
+    const [itemsEnStock, setItemsEnStock] = useState([]);
     
-    const arrayProductos = importProductos;
-
     const [itemToDisplay, setItemToDisplay] = useState();
     
+    const [loading, setLoading] = useState(false)
+    
     const{id: idParams} = useParams();
+    
+    const obtenerProductos = () => {
+        const items = database
+            .collection("Catalogo")
+        items.get().then(((query) =>
+        setItemsEnStock(
+            query.docs.map((doc) => {
+                return {...doc.data(), id: doc.id}
+            })
+            )
+            ))
+        }
 
+        useEffect(() => {
+            obtenerProductos()
+            setItemToDisplay()
+            getSelectedItems()
+                .then((result) => setItemToDisplay(result));
+        }, [idParams]);
+        
     const getSelectedItems = () => {
         return new Promise((resolve) => {
             setTimeout(()=> {
-                resolve(arrayProductos.find((Item) => Item.id.toString() === idParams));
-            }, 1000);
+                resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams));
+            }, 3000);
         });
     };
+    
 
     useEffect(() => {
-        setItemToDisplay();
-        getSelectedItems().then((result) => setItemToDisplay(result));
-    }, [idParams]);
+        setLoading(true)
+        getSelectedItems()
+        .then(res => {
+                getSelectedItems(res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
+    }, [])
 
-    return <>
-    {itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>}
-    </>;
+    return (
+    <>{
+        loading ? <Loader/>
+            :
+        itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>
+        
+    }</>
+    )
 }
 
 export default ItemDetailContainer

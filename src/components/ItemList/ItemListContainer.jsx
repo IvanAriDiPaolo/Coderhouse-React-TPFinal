@@ -1,35 +1,52 @@
-import React,{useEffect, useState} from "react"
-import {Item} from '../Item/Item';
-import importProductos from '../../json/productos.json'
+import React, { useEffect, useState } from "react"
+import { Item } from '../Item/Item';
+import Loader from "../Loader/Loader";
+import { database } from "../../firebase/firebase";
 
 const ItemListContainer = () => {
-
-    const[productos, setProductos] = useState([])
-
-    const arrayProductos = importProductos;
-
-
-    const cargarData = () => {
+    //Estado array de productos
+    const [productosAMostrar, setProductosAMostrar] = useState([])
+    //Estado de loading
+    const [loading, setLoading] = useState(false)
+    
+    const obtenerProductos = () => {
+        const products = database
+            .collection("Catalogo")
+        products.get().then(((query) =>
+            setProductosAMostrar(
+                query.docs.map((doc) => {
+                    return { ...doc.data(), id: doc.id }
+                })
+            )
+        )
+        )
         return new Promise((resolve,reject) => {
             setTimeout(()=>{
-                resolve( arrayProductos );
+                resolve( obtenerProductos );
             }, 1000);
         });
-    };
+    }
 
-    useEffect(()=>{
-        cargarData()
-            .then((resultado) => setProductos(resultado))
-    }, [arrayProductos]);
+    //Cargar loading    
+    useEffect(() => {
+        setLoading(true)
+        obtenerProductos()
+            .then(res => {
+                obtenerProductos(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }, [])
 
-    return(
-        <section className="ilc">
-            {/* <Item {...prod1}/>
-            <Item {...prod2}/>
-            <Item {...prod3}/>
-            <Item {...prod4}/> */}
-            {productos.map((prod) => <Item Item={prod.Item} key={prod.id} {...prod}/>)}
-        </section>
+    return (
+        <div>
+            {loading ? <Loader/> :
+            productosAMostrar.length ? (productosAMostrar.map((prod) => <Item Item={prod.Item} key={prod.id} {...prod}/>)) : (<h3>Cargando...</h3>)}
+        </div>
     );
 };
 export default ItemListContainer;
