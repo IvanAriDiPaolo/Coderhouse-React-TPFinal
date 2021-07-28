@@ -10,9 +10,10 @@ function Contador() {
         (state>0?setState(state-1):console.log("No puede ser menor que 0"))
     };
 
-    const reset = () => {
+/*   const reset = () => {
         setState(0)
     };
+*/
     return(
         <div className='Contador' cant={state}>
             <button onClick={handleButtonl}> - </button>

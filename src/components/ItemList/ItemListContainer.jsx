@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
-import { Item } from '../Item/Item';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React,{useEffect, useState} from "react"
+import {database} from "../../firebase/firebase";
 import Loader from "../Loader/Loader";
-import { database } from "../../firebase/firebase";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {

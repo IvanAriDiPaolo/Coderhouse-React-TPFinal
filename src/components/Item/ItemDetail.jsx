@@ -1,30 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Contador from '../Contador/Contador'
 
-const ItemDetail = ({itemToDisplay:Item}) => {
+export default function ItemDetail({itemToDisplay}) {
     const [count, setCount] = useState();
     const [terminado, setTerminado] = useState(false);
     const handleState = () => setTerminado(!terminado)
     return (
         <div>
-            <img src="https://via.placeholder.com/150" alt="Si" />
-            <h4>{Item.nombre}</h4>
-            <p>{Item.descripcion}</p>
-            <p>Precio: ${Item.precio}</p>
+            <img src={itemToDisplay.img} alt="Si" />
+            <h4>{itemToDisplay.nombre}</h4>
+            <p>{itemToDisplay.descripcion}</p>
+            <p>Precio: ${itemToDisplay.precio}</p>
             <Contador
             inicial= {1}
             count = {count}
             setCount = {setCount}/>
             <button>Agregar</button>
-            {!terminado ? (<>
-                <button onClick={handleState}>Terminar Compra</button>
-                <button onClick="">Modificar</button>
-            </>) : 
-            (<>
-            </>)
-            }
-        </div>    
+        </div>
     )
 }
-
-export default ItemDetail

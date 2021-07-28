@@ -1,7 +1,5 @@
-import React,{useState, useEffect} from 'react'
-import {idParams} from 'react'
+import React from 'react'
 import {Item} from '../Item/Item'
-import Loader from '../Loader/Loader'
 export default function ItemList({productosAMostrar}) {
     return (
         <div>

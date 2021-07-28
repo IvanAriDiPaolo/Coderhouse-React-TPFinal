@@ -4,7 +4,6 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
-import ItemList from './components/ItemList/ItemList';
 
 const App = () => {
   return (

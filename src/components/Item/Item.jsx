@@ -1,10 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import Contador from '../Contador/Contador';
-export const Item = (props) => {
 
+export const Item = (props) => {    
     const {nombre, descripcion, precio, id, img} = props;
-
     return (
         <article className="Item">
             <Link to={`/Item/${id}`}>
