@@ -9,64 +9,39 @@ function ItemDetailContainer() {
     
     const [itemToDisplay, setItemToDisplay] = useState();
     
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     
     const{id: idParams} = useParams();
+
     
     const obtenerProductos = () => {
-
         const items = database
-            .collection("Catalogo")
-
+        .collection("Catalogo")
         items.get().then(((query) =>
         setItemsEnStock(
             query.docs.map((doc) => {
                 return {...doc.data(), id: doc.id}
-            })
-            )
-            ))
-            /*
-            return new Promise((resolve,reject) => {
-                setTimeout(()=>{
-                    resolve( obtenerProductos );
-                }, 1000);
-            });*/
+            }))));
         }
-        const getSelectedItems = () => {
-            return new Promise((resolve) => {
-                setTimeout(()=> {
-                    resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams));
-                }, 3000);
-            });
+
+    const getSelectedItems = () => {
+        return new Promise((resolve) => {
+            setTimeout(()=> {
+                resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams));
+                console.log(idParams)
+            }, 500);
+        });
     };
     
-    useEffect(() => {
-        obtenerProductos()
-        setItemToDisplay()
-        getSelectedItems()
-            .then((result) => setItemToDisplay(result));
-    }, [idParams]);
- 
-    useEffect(() => {
-        setLoading(true)
-        getSelectedItems()
-        .then(res => {
-            getSelectedItems(res)
-        })
-        .catch(err=>{
-                console.log(err)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-        }, [])
+    useEffect(() => obtenerProductos(),[])
+    
 
     return (
-    <>{
-        loading ? <Loader/>
-        :
-        itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>
-    }</>
+    <>
+    {
+        itemsEnStock.length === 0 ? <Loader/> : itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>
+    }
+    </>
     )
 }
 

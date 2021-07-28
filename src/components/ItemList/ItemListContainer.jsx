@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Item } from '../Item/Item';
 import Loader from "../Loader/Loader";
 import { database } from "../../firebase/firebase";
+import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
     //Estado array de productos
@@ -42,11 +43,8 @@ const ItemListContainer = () => {
             })
     }, [])
 
-    return (
-        <div>
-            {loading ? <Loader/> :
-            productosAMostrar.length ? (productosAMostrar.map((prod) => <Item Item={prod.Item} key={prod.id} {...prod}/>)) : (<h3>Cargando...</h3>)}
-        </div>
-    );
+    return (<>
+        {loading ? <Loader/> : productosAMostrar.length ? <ItemList productosAMostrar={productosAMostrar}/> : (<h3>Cargando...</h3>)}
+    </>);
 };
 export default ItemListContainer;
