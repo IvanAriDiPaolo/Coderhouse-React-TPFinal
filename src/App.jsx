@@ -16,13 +16,14 @@ const App = () => {
             <br></br>
             <strong>Todavía no tiene mucho estilado, pero tranquilo que ya lo va a tener!.</strong>
           </Route>
-          <Route exact path="/Catalogo">
+          <Route exact path="/Catalogo/:id">
             <ItemListContainer/>
           </Route>
           <Route exact path="/Item/:id">
             <ItemDetailContainer/>
           </Route>
         </Switch>
+        <div></div>
       </BrowserRouter>
     </div>
   );

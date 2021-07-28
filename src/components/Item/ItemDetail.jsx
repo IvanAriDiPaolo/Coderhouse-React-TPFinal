@@ -4,9 +4,8 @@ import Contador from '../Contador/Contador'
 export default function ItemDetail({itemToDisplay}) {
     const [count, setCount] = useState();
     const [terminado, setTerminado] = useState(false);
-    const handleState = () => setTerminado(!terminado)
     return (
-        <div>
+        <article>
             <img src={itemToDisplay.img} alt="Si" />
             <h4>{itemToDisplay.nombre}</h4>
             <p>{itemToDisplay.descripcion}</p>
@@ -16,6 +15,6 @@ export default function ItemDetail({itemToDisplay}) {
             count = {count}
             setCount = {setCount}/>
             <button>Agregar</button>
-        </div>
+        </article>
     )
 }
