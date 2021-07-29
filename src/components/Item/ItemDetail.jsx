@@ -16,12 +16,13 @@ export default function ItemDetail({itemToDisplay}) {
             <h4>{itemToDisplay.nombre}</h4>
             <p>{itemToDisplay.descripcion}</p>
             <p>Precio: ${itemToDisplay.precio}</p>
-            <Contador
+            {!terminado ? <Contador
             inicial= {1}
             count = {count}
-            setCount = {setCount}/>
+            setCount = {setCount}/> : ""}
             <button onClick={() => onAdd()}>{terminado ? "Modificar" : "Agregar"}</button>
-            {terminado ? <p>Se ha terminado la compra, usted seleccionó {count}</p> : ""}
+            {terminado ? <p>Se ha terminado la compra, usted seleccionó {count} productos</p> : ""}
+            {terminado ? <p>El total de los productos seria de ${count * itemToDisplay.precio}</p>: ""}
         </article>
     )
 }

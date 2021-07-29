@@ -1,25 +1,29 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
-function Contador() {
-    const [cont, setCont] = useState(0);
+function Contador({count, setCount}) {
+    const [state, setState] = useState(0);
     const handleButtonp = () => {
-        (cont<5?setCont(cont+1):console.log("No puede ser mayor que 5"))
+        (state<5?setState(state+1):console.log("No puede ser mayor que 5"))
     };
     
     const handleButtonl = () => {
-        (cont>0?setCont(cont-1):console.log("No puede ser menor que 0"))
+        (state>0?setState(state-1):console.log("No puede ser menor que 0"))
     };
 
+    useEffect(() =>{
+        setCount(state);
+    },[state])
+
 /*   const reset = () => {
-        setCont(0)
+        setState(0)
     };
 */
-    return(<>{ cont &&
-        <div className='Contador' cont={cont}>
+    return(
+        <div className='Contador' cant={state}>
             <button onClick={handleButtonl}> - </button>
-            <h2>Cantidad: {cont}</h2>
+            <h2>Cantidad: {state}</h2>
             <button onClick={handleButtonp}> + </button>
-        </div>}</>
+        </div>
     );
 };
 export default Contador;
