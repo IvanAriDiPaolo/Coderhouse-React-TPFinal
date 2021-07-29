@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import {database} from '../../firebase/firebase';
 
-function ItemDetailContainer() {
+const ItemDetailContainer = () => {
     const [itemsEnStock, setItemsEnStock] = useState([]);
-    const [itemToDisplay, setItemToDisplay] = useState();
+    const [itemToDisplay, setItemToDisplay] = useState("");
 
     const {id: idParams} = useParams();
 
@@ -21,6 +21,7 @@ function ItemDetailContainer() {
             )
         )
         )
+
         return new Promise((resolve,reject) => {
             setTimeout(()=>{
                 resolve( obtenerProductos );
@@ -28,23 +29,23 @@ function ItemDetailContainer() {
         });
     }
 
+
     const getSelectedItems = () => {
         return new Promise((resolve) => {
             resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams))
         });
     };
     useEffect(() => {
+        obtenerProductos();
         setItemToDisplay();
         getSelectedItems().then((result) => setItemToDisplay(result));
-        obtenerProductos();
     }, [idParams])  
 
-
+    
     return (
         <>
         { itemToDisplay && <ItemDetail itemToDisplay={itemToDisplay}/>}
         </>
     )
 }
-
 export default ItemDetailContainer

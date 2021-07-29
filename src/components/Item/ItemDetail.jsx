@@ -1,28 +1,48 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import { Context } from '../../services/Context';
 import Contador from '../Contador/Contador'
 
-export default function ItemDetail({itemToDisplay}) {
+const ItemDetail = ({itemToDisplay}) => {
+    const {addToCart, removeFromCart, cart} = useContext(Context);
     const [count, setCount] = useState();
     const [terminado, setTerminado] = useState(false);
 
     const onAdd = () => {
         setTerminado(!terminado);
+        if(!terminado){
+            handleRemove();
+        }
     }  
 
+    const handleSend = () =>{
+        addToCart({...itemToDisplay, quantity: count})//se le esta pasando un objeto
+    }
+    
+    const handleRemove = () =>{
+        removeFromCart(itemToDisplay)
+    }
 
     return (
         <article>
             <img src={itemToDisplay.img} alt="Si" />
             <h4>{itemToDisplay.nombre}</h4>
-            <p>{itemToDisplay.descripcion}</p>
-            <p>Precio: ${itemToDisplay.precio}</p>
-            {!terminado ? <Contador
-            inicial= {1}
-            count = {count}
-            setCount = {setCount}/> : ""}
             <button onClick={() => onAdd()}>{terminado ? "Modificar" : "Agregar"}</button>
-            {terminado ? <p>Se ha terminado la compra, usted seleccionó {count} productos</p> : ""}
-            {terminado ? <p>El total de los productos seria de ${count * itemToDisplay.precio}</p>: ""}
+            {terminado ?
+                <div>
+                    <p>Se ha terminado la compra, usted seleccionó {count} productos</p>
+                    <p>El total de los productos seria de ${count * itemToDisplay.precio}</p>
+                    <button onClick={() => handleSend()}>Comprar</button>
+                    {console.log(cart)}
+                </div> :
+            <>
+                <Contador
+                inicial= {1}
+                count = {count}
+                setCount = {setCount}/>
+                <p>{itemToDisplay.descripcion}</p>
+                <p>Precio: ${itemToDisplay.precio}</p>
+            </>}
         </article>
     )
 }
+export default ItemDetail;
