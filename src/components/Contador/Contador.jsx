@@ -1,25 +1,25 @@
 import React, {useState} from 'react'
 
 function Contador() {
-    const [state, setState] = useState(0);
+    const [cont, setCont] = useState(0);
     const handleButtonp = () => {
-        (state<5?setState(state+1):console.log("No puede ser mayor que 5"))
+        (cont<5?setCont(cont+1):console.log("No puede ser mayor que 5"))
     };
     
     const handleButtonl = () => {
-        (state>0?setState(state-1):console.log("No puede ser menor que 0"))
+        (cont>0?setCont(cont-1):console.log("No puede ser menor que 0"))
     };
 
 /*   const reset = () => {
-        setState(0)
+        setCont(0)
     };
 */
-    return(
-        <div className='Contador' cant={state}>
+    return(<>{ cont &&
+        <div className='Contador' cont={cont}>
             <button onClick={handleButtonl}> - </button>
-            <h2>Cantidad: {state}</h2>
+            <h2>Cantidad: {cont}</h2>
             <button onClick={handleButtonp}> + </button>
-        </div>
+        </div>}</>
     );
 };
 export default Contador;

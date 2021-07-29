@@ -6,7 +6,6 @@ import {database} from '../../firebase/firebase';
 
 function ItemDetailContainer() {
     const [itemsEnStock, setItemsEnStock] = useState([]);
-
     const [itemToDisplay, setItemToDisplay] = useState();
 
     const {id: idParams} = useParams();
@@ -34,12 +33,11 @@ function ItemDetailContainer() {
             resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams))
         });
     };
-
     useEffect(() => {
         setItemToDisplay();
         getSelectedItems().then((result) => setItemToDisplay(result));
         obtenerProductos();
-    }, [idParams])
+    }, [idParams])  
 
 
     return (

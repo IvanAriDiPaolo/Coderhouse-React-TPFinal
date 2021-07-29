@@ -12,12 +12,12 @@ const Navbar = (props) => {
                     <Link to='/'>
                         <li className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</li>
                     </Link>
-                    </div>
+                </div>
                 <div className="DivOtros">
                     <Link to='/Nosotros'>
                         <p className="NavBarUlLi">Nosotros</p>
                     </Link>
-                <p className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</p>
+                    <h1 className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</h1>
                     <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
@@ -26,8 +26,8 @@ const Navbar = (props) => {
             </div>
             <div>
                 {categorias ? "" :  <Link to={`/Catalogo/${cat}`}>
-                    <p onClick={() => setCat('Zapa')}>Zapa</p>
-                    <p onClick={() => setCat('Ropa')}>Ropita</p>
+                    <p onClick={() => setCat('Zapa')}>Zapas</p>
+                    <p onClick={() => setCat('Ropa')}>Ropa</p>
                 </Link>}
             </div>
         </nav>
