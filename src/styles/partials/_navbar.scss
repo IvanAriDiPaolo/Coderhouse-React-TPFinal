@@ -1,6 +1,28 @@
 .NavBar {
-  width: 100%;
+  min-height: 3rem;
+  background-color: wheat;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  text-align: center;
+  p {
+    font-weight: bold;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: center;
+    display: block;
+    bottom: 15px;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.685);
+    &:hover {
+      color: white;
+      font-weight: bolder;
+      text-decoration: underline;
+    }
+  }
   .NavBarDiv {
+    left: 2rem;
+    top: 1rem;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -8,6 +30,8 @@
       justify-self: flex-start;
     }
     .DivOtros {
+      right: 2rem;
+      top: 1rem;
       display: flex;
       gap: 4rem;
       flex-direction: row;

@@ -11,7 +11,7 @@ const App = () => {
     <DataProvider>
       <div className="App">
         <BrowserRouter>
-          <Navbar nombreDeLaTienda="Teclados"/>
+          <Navbar nombreDeLaTienda="Ropa"/>
           <Switch>
             <Route exact path='/'>
               <strong>Este es el home, bienvenido a la página.</strong>

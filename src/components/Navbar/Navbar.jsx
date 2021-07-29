@@ -10,14 +10,14 @@ const Navbar = (props) => {
             <div className="NavBarDiv">
                 <div className="DivTienda">
                     <Link to='/'>
-                        <li className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</li>
+                        <p className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</p>
                     </Link>
                 </div>
                 <div className="DivOtros">
                     <Link to='/Nosotros'>
                         <p className="NavBarUlLi">Nosotros</p>
                     </Link>
-                    <h1 className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</h1>
+                    <p className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</p>
                     <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
@@ -25,10 +25,16 @@ const Navbar = (props) => {
                 </div>
             </div>
             <div>
-                {categorias ? "" :  <Link to={`/Catalogo/${cat}`}>
+                {categorias ? "" :  
+                <>
+                <br/>
+                <Link to={`/Catalogo/${cat}`}>
                     <p onClick={() => setCat('Zapa')}>Zapas</p>
+                </Link>
+                <Link to={`/Catalogo/${cat}`}>
                     <p onClick={() => setCat('Ropa')}>Ropa</p>
-                </Link>}
+                </Link>
+                </>}
             </div>
         </nav>
     )

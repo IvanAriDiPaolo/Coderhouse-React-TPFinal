@@ -8,7 +8,11 @@ const ItemDetail = ({itemToDisplay}) => {
     const [terminado, setTerminado] = useState(false);
 
     const onAdd = () => {
-        setTerminado(!terminado);
+        if (count != 0){
+            setTerminado(!terminado);
+        }else{
+             alert("Tenes que agregar por lo menos 1 producto.")
+        }
         if(!terminado){
             handleRemove();
         }

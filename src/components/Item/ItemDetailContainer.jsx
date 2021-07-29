@@ -35,11 +35,15 @@ const ItemDetailContainer = () => {
             resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams))
         });
     };
+
     useEffect(() => {
         obtenerProductos();
+    }, [])
+
+    useEffect(() => {
         setItemToDisplay();
         getSelectedItems().then((result) => setItemToDisplay(result));
-    }, [idParams])  
+    }, [itemsEnStock])  
 
     
     return (
