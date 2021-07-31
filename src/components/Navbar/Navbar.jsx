@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Cart from './Cart/Cart';
 import {Link} from 'react-router-dom';
-import { useParams } from 'react-router-dom'
 
 const Navbar = (props) => {
     const [categorias, setCategorias] = useState(false);
@@ -21,7 +20,9 @@ const Navbar = (props) => {
                     <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
-                    <Cart/>
+                    <Link to='/Carrito'>
+                        <Cart/>
+                    </Link>
                 </div>
             </div>
             <div>

@@ -16,8 +16,9 @@ export const DataProvider = ({children}) =>{
     };
 
     const removeFromCart = (receivedItem) =>{
-        let allItemsExceptRemoved = cart.filter(item => item.id !== receivedItem.id)//muy buen ejemplo de filter
-        setCart(allItemsExceptRemoved)
+        let allItemsExceptRemoved = cart.filter(item => item.id !== receivedItem.id);//muy buen ejemplo de filter
+        console.log(allItemsExceptRemoved)
+        setCart(allItemsExceptRemoved);
     };
 
     const clear = () => setCart([]);
