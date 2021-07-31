@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-function Contador({count, setCount}) {
+function Contador({setCount}) {
     const [state, setState] = useState(0);
     const handleButtonp = () => {
         (state<5?setState(state+1):console.log("No puede ser mayor que 5"))
