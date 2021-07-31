@@ -3,7 +3,7 @@ import { Context } from '../../services/Context';
 
 export const ItemEnCarrito = (props) => {
     const {id, img, nombre, precio, quantity} = props;
-    const {removeFromCart} = useContext(Context);
+    const {setCart, removeFromCart} = useContext(Context);
 
     return (
         <article className="Item">
@@ -12,6 +12,7 @@ export const ItemEnCarrito = (props) => {
                 <p>Cantidad agregada: {quantity}</p>
                 <p>Precio: ${precio}</p>
                 <button onClick={() =>{removeFromCart(id)}}>Eliminar</button>
+                <button onClick={() => setCart([])}>Eliminar Todo</button>
         </article>
     )
 }
