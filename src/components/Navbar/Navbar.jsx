@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Cart from './Cart/Cart';
 import {Link} from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 const Navbar = (props) => {
-    const [categorias, setCategorias] = useState(false)
-    const [cat, setCat] = useState('')
+    const [categorias, setCategorias] = useState(false);
     return (
         <nav className="NavBar">
             <div className="NavBarDiv">
@@ -28,11 +28,11 @@ const Navbar = (props) => {
                 {categorias ? "" :  
                 <>
                 <br/>
-                <Link to={`/Catalogo/${cat}`}>
-                    <p onClick={() => setCat('Zapa')}>Zapas</p>
+                <Link to={`/Catalogo/Zapa`}>
+                    <p>Zapas</p>
                 </Link>
-                <Link to={`/Catalogo/${cat}`}>
-                    <p onClick={() => setCat('Ropa')}>Ropa</p>
+                <Link to={`/Catalogo/Ropa`}>
+                    <p>Ropa</p>
                 </Link>
                 </>}
             </div>

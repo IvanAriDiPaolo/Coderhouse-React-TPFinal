@@ -19,21 +19,13 @@ const ItemDetailContainer = () => {
                     return { ...doc.data(), id: doc.id }
                 })
             )
-        )
-        )
-
-        return new Promise((resolve,reject) => {
-            setTimeout(()=>{
-                resolve( obtenerProductos );
-            }, 200);
-        });
+        ))
     }
 
 
     const getSelectedItems = () => {
-        return new Promise((resolve) => {
-            resolve(itemsEnStock.find((Item) => Item.id.toString() === idParams))
-        });
+        const result = itemsEnStock.find((Item) => Item.id.toString() === idParams)
+        setItemToDisplay(result)
     };
 
     useEffect(() => {
@@ -41,8 +33,7 @@ const ItemDetailContainer = () => {
     }, [])
 
     useEffect(() => {
-        setItemToDisplay();
-        getSelectedItems().then((result) => setItemToDisplay(result));
+        getSelectedItems();
     }, [itemsEnStock])  
 
     

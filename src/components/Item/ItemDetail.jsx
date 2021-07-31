@@ -11,7 +11,7 @@ const ItemDetail = ({itemToDisplay}) => {
         if (count != 0){
             setTerminado(!terminado);
         }else{
-             alert("Tenes que agregar por lo menos 1 producto.")
+            alert("Tenes que agregar por lo menos 1 producto.")
         }
         if(!terminado){
             handleRemove();
