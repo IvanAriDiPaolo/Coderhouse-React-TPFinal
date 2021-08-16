@@ -6,6 +6,8 @@ import Navbar from './components/Navbar/Navbar';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import { Carrito } from './components/Carrito/Carrito';
+import { OpinionesContainer } from './components/Opiniones/OpinionesContainer';
+import { AgregarOpinion } from './components/Opiniones/AgregarOpinion';
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
               <strong>Este es el home, bienvenido a la página.</strong>
               <br></br>
               <strong>Todavía no tiene mucho estilado, pero tranquilo que ya lo va a tener!.</strong>
+              <OpinionesContainer/>
             </Route>
             <Route exact path="/Catalogo/:id">
               <ItemListContainer/>
