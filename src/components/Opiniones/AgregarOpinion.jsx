@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AgregarOpinion = ({agregarOp}) => {
+export const AgregarOpinion = ({agregarOp,borrarOpiniones}) => {
 
     const manejarSubmit = (ev) => {
         ev.preventDefault();
@@ -11,12 +11,15 @@ export const AgregarOpinion = ({agregarOp}) => {
     }
 
     return (
-        <form onSubmit={manejarSubmit}>
-            <label>Nombre</label>
-            <input type="text" placeholder="Ingresar Nombre" id="nombre"/>
-            <label>Opinion</label>
-            <textarea placeholder="Ingresar opinion..." id="opinion"></textarea>
-            <button type="submit">Send</button>
-        </form>
+        <>
+            <h3>Tu opinion nos importa!</h3>
+            <form onSubmit={manejarSubmit}>
+                <label>Nombre</label>
+                <input type="text" placeholder="Ingresar Nombre" id="nombre"/>
+                <label>Opinion</label>
+                <textarea placeholder="Ingresar opinion..." id="opinion"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </>
     )
 }

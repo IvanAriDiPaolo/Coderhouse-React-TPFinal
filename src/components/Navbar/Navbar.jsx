@@ -13,8 +13,8 @@ const Navbar = (props) => {
                     </Link>
                 </div>
                 <div className="DivOtros">
-                    <Link to='/Nosotros'>
-                        <p className="NavBarUlLi">Nosotros</p>
+                    <Link to='/Referencias'>
+                        <p className="NavBarUlLi">Referencias</p>
                     </Link>
                     <p className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</p>
                     <Link to='/Contacto'>

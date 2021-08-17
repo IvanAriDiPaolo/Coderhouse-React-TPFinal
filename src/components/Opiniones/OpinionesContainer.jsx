@@ -45,6 +45,17 @@ export const OpinionesContainer = () => {
         setOpiniones(opinionesFetcheadas)
     };
     
+    const borrarOpiniones = async () => {
+        let opinionesRemotas = database.collection("Opiniones")
+        const query = await opinionesRemotas.get();
+        const batch = database.batch();
+        query.docs.forEach((op) => batch.delete(op.ref));
+        batch.commit();
+        obtenerOpiniones();
+    }
+
+
+
     useEffect(() => {
         obtenerOpiniones();
         console.log(opiniones)
@@ -54,6 +65,7 @@ export const OpinionesContainer = () => {
             <section>
                 <AgregarOpinion agregarOp={agregarOp}/>
                 {opiniones.map((item) => (<Opinion data={item} key={item.id} sumarLike={sumarLike}/>))}
+                <button onClick={borrarOpiniones}>Borrar opiniones</button>
             </section>
     )
 }

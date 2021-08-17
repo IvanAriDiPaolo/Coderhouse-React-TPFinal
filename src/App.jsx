@@ -20,7 +20,6 @@ const App = () => {
               <strong>Este es el home, bienvenido a la página.</strong>
               <br></br>
               <strong>Todavía no tiene mucho estilado, pero tranquilo que ya lo va a tener!.</strong>
-              <OpinionesContainer/>
             </Route>
             <Route exact path="/Catalogo/:id">
               <ItemListContainer/>
@@ -30,6 +29,9 @@ const App = () => {
             </Route>
             <Route exact path="/Carrito">
               <Carrito/>
+            </Route>
+            <Route exact path="/Referencias">
+              <OpinionesContainer/>
             </Route>
           </Switch>
           <div></div>
