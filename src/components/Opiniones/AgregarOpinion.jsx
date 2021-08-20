@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AgregarOpinion = ({agregarOp,borrarOpiniones}) => {
+export const AgregarOpinion = ({agregarOp}) => {
 
     const manejarSubmit = (ev) => {
         ev.preventDefault();

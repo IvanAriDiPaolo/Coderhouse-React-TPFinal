@@ -13,7 +13,7 @@ const ItemDetail = ({itemToDisplay}) => {
         }else{
             alert("Tenes que agregar por lo menos 1 producto.")
         }
-        if(!terminado){
+        if(terminado){
             handleRemove();
         }
     }  
@@ -33,10 +33,10 @@ const ItemDetail = ({itemToDisplay}) => {
             <button onClick={() => onAdd()}>{terminado ? "Modificar" : "Agregar"}</button>
             {terminado ?
                 <div>
-                    <p>Se ha terminado la compra, usted seleccionó {count} productos</p>
+                    <p>Usted seleccionó {count} productos</p>
                     <p>El total de los productos seria de ${count * itemToDisplay.precio}</p>
-                    <button onClick={() => handleSend()}>Comprar</button>
-                    {console.log(cart)}
+                    <p>Esto se adicionará a su carrito, desea confirmar?</p>
+                    <button onClick={() => handleSend()}>Confirmar</button>
                 </div> :
             <>
                 <Contador

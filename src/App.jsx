@@ -7,7 +7,6 @@ import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import { Carrito } from './components/Carrito/Carrito';
 import { OpinionesContainer } from './components/Opiniones/OpinionesContainer';
-import { AgregarOpinion } from './components/Opiniones/AgregarOpinion';
 
 const App = () => {
   return (
