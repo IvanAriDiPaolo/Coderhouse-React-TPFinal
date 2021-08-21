@@ -15,13 +15,13 @@ export const OpinionesContainer = () => {
             fecha: new Date().toString(),
         }
     
-    let opinionesNuevas = database.collection("Opiniones");
-    
-    opinionesNuevas
-    .add(OpinionNueva)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
-    .finally(obtenerOpiniones());
+        let opinionesNuevas = database.collection("Opiniones");
+        
+        opinionesNuevas
+        .add(OpinionNueva)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+        .finally(obtenerOpiniones());
     }
 
     const sumarLike = async (id) => {

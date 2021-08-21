@@ -1,11 +1,23 @@
 import React,{useContext} from 'react'
+import { Context } from '../../services/Context';
 
-export const OrderForm = () => {
-    const {total} = useContext(Context); 
+export const OrderForm = ({crearOrder}) => {
+    const {total} = useContext(Context);
+
+    const enviarForm = (ev) =>{
+        ev.preventDefault();
+        let nombre = ev.target.nombre.value;
+        let email = ev.target.email.value;
+        let celular = ev.target.celular.value;
+        console.log(total)
+        crearOrder(nombre, email, celular);
+        ev.target.reset();
+    }
+
     return (
         <>
             <h3>Ingresá tus datos para finalizar la compra:</h3>
-            <form onSubmit={}>
+            <form onSubmit={enviarForm}>
                 <label>Nombre Completo</label>
                 <input type="text" placeholder="Ingresar Nombre" id="nombre"/>
                 <label>E-Mail</label>
