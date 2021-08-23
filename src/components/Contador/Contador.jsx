@@ -14,10 +14,6 @@ function Contador({setCount}) {
         setCount(state);
     },[state])
 
-/*   const reset = () => {
-        setState(0)
-    };
-*/
     return(
         <div className='Contador' cant={state}>
             <button onClick={handleButtonl}> - </button>

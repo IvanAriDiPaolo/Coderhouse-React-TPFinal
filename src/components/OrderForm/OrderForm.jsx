@@ -1,7 +1,7 @@
 import React,{useContext} from 'react'
 import { Context } from '../../services/Context';
 
-export const OrderForm = ({crearOrder}) => {
+export const OrderForm = ({crearOrder,checkProductos}) => {
     const {total} = useContext(Context);
 
     const enviarForm = (ev) =>{
@@ -9,8 +9,7 @@ export const OrderForm = ({crearOrder}) => {
         let nombre = ev.target.nombre.value;
         let email = ev.target.email.value;
         let celular = ev.target.celular.value;
-        console.log(total)
-        crearOrder(nombre, email, celular);
+        checkProductos(nombre, email, celular);
         ev.target.reset();
     }
 

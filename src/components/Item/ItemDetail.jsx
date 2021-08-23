@@ -3,7 +3,7 @@ import { Context } from '../../services/Context';
 import Contador from '../Contador/Contador'
 
 const ItemDetail = ({itemToDisplay}) => {
-    const {addToCart, removeFromCart, cart} = useContext(Context);
+    const {addToCart, removeFromCart} = useContext(Context);
     const [count, setCount] = useState();
     const [terminado, setTerminado] = useState(false);
 

@@ -59,7 +59,7 @@ export const OpinionesContainer = () => {
     useEffect(() => {
         obtenerOpiniones();
         console.log(opiniones)
-    }, [])
+    })
 
     return (
             <section>
