@@ -62,16 +62,15 @@ export const OrderFormContainer = () => {
     
     
         const obtenerOreders = async () =>{
-            let ordersRemotas = database.collection("Orders")
-            let ordersFetcheadas = await ordersRemotas
-                .get()
-                .then((query) => (query.docs.map((item) => ({ ...item.data(), id: item.id }))))
+            // let ordersRemotas = database.collection("Orders")
+            // let ordersFetcheadas = await ordersRemotas
+            //     .get()
+            //     .then((query) => (query.docs.map((item) => ({ ...item.data(), id: item.id }))))
         };
 
     return (
         <section>
             <OrderForm crearOrder={crearOrder} checkProductos={checkProductos}/>
-            <button onClick={() => checkProductos()}>ASD</button>
         </section>
     )
 }
