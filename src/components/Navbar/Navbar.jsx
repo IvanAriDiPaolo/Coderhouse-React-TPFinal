@@ -7,6 +7,7 @@ const Navbar = (props) => {
 
     function handleChange(e){
         history.push(`/Catalogo/${e.target.value}`);
+        e.target.value = "Categorias";
     };
 
     return (
@@ -22,7 +23,7 @@ const Navbar = (props) => {
                         <p className="NavBarUlLi">Referencias</p>
                     </Link>
                     <select onChange={handleChange}>
-                        <option blocked selected value="Categorias">Categorias</option>
+                        <option blocked selected value="Categorias" disabled>Categorias</option>
                         <option value="Zapa">Zapas</option>
                         <option value="Ropa">Ropa</option>
                     </select>

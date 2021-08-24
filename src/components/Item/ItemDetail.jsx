@@ -30,6 +30,7 @@ const ItemDetail = ({itemToDisplay}) => {
         <article>
             <img src={itemToDisplay.img} alt="Si" />
             <h4>{itemToDisplay.nombre}</h4>
+            <h5>Stock: {itemToDisplay.stock}</h5>
             <button onClick={() => onAdd()}>{terminado ? "Modificar" : "Agregar"}</button>
             {terminado ?
                 <div>
@@ -42,7 +43,8 @@ const ItemDetail = ({itemToDisplay}) => {
                 <Contador
                 inicial= {1}
                 count = {count}
-                setCount = {setCount}/>
+                setCount = {setCount}
+                maxCount = {itemToDisplay.stock}/>
                 <p>{itemToDisplay.descripcion}</p>
                 <p>Precio: ${itemToDisplay.precio}</p>
             </>}

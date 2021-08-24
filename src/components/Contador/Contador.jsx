@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 
-function Contador({setCount}) {
+function Contador({setCount, maxCount}) {
     const [state, setState] = useState(0);
     const handleButtonp = () => {
-        (state<5?setState(state+1):console.log("No puede ser mayor que 5"))
+        (state<maxCount && state<10 ?setState(state+1) : state == 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " en stock."))
     };
     
     const handleButtonl = () => {
-        (state>0?setState(state-1):console.log("No puede ser menor que 0"))
+        (state>0?setState(state-1):alert("Por favor, seleccione una cantidad valida de productos."))
     };
 
     useEffect(() =>{
