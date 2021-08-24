@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import Cart from './Cart/Cart';
-import {Link} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 const Navbar = (props) => {
-    const [categorias, setCategorias] = useState(false);
+    let history = useHistory();
+
+    function handleChange(e){
+        history.push(`/Catalogo/${e.target.value}`);
+    };
+
     return (
         <nav className="NavBar">
             <div className="NavBarDiv">
@@ -16,7 +21,11 @@ const Navbar = (props) => {
                     <Link to='/Referencias'>
                         <p className="NavBarUlLi">Referencias</p>
                     </Link>
-                    <p className="NavBarUlLi" onClick={() => setCategorias(!categorias)}>Catálogo</p>
+                    <select onChange={handleChange}>
+                        <option blocked selected value="Categorias">Categorias</option>
+                        <option value="Zapa">Zapas</option>
+                        <option value="Ropa">Ropa</option>
+                    </select>
                     <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
@@ -24,18 +33,6 @@ const Navbar = (props) => {
                         <Cart/>
                     </Link>
                 </div>
-            </div>
-            <div>
-                {categorias ? "" :  
-                <>
-                <br/>
-                <Link to={`/Catalogo/Zapa`}>
-                    <p>Zapas</p>
-                </Link>
-                <Link to={`/Catalogo/Ropa`}>
-                    <p>Ropa</p>
-                </Link>
-                </>}
             </div>
         </nav>
     )

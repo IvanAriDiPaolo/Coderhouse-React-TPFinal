@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {database} from '../../firebase/firebase'
 import { OrderForm } from './OrderForm';
 import { Context } from '../../services/Context';
@@ -6,7 +6,6 @@ import firebase from "firebase/app";
 
 export const OrderFormContainer = () => {
     const {total, cart, clear} = useContext(Context);
-    let orderID;
 
     const checkProductos = async (nombre, email, celular) => {
         let productos = database.collection("Catalogo").where(
@@ -32,7 +31,6 @@ export const OrderFormContainer = () => {
             if (!sinStock.length){
                 crearOrder(nombre, email, celular);
                 batch.commit().then(()=>{
-                    alert("Orden generada con exito! \n ID:" + orderID);
                     clear();
                 })
             }else{
@@ -55,19 +53,10 @@ export const OrderFormContainer = () => {
         const ordersNuevas = database.collection('Orders')
         ordersNuevas
             .add(orderNueva)
-            .then((res) => orderID = (res))
+            .then((res) => alert("Orden generada con exito! \n ID:  " + res.id))
             .catch((err) => console.log(err))
-            .finally(obtenerOreders());
         }
     
-    
-        const obtenerOreders = async () =>{
-            // let ordersRemotas = database.collection("Orders")
-            // let ordersFetcheadas = await ordersRemotas
-            //     .get()
-            //     .then((query) => (query.docs.map((item) => ({ ...item.data(), id: item.id }))))
-        };
-
     return (
         <section>
             <OrderForm crearOrder={crearOrder} checkProductos={checkProductos}/>
