@@ -10,12 +10,13 @@ export const Carrito = () => {
             {
                 cart.length ?
                 <>
+                <h1>Carrito actual:</h1>
                 {cart.map((prod) => <ItemEnCarrito Cant= {prod.quantity} Item={prod.Item} key= {prod.id} {...prod}/>)}
                 <button onClick={() => {clear()}}>Eliminar Todo</button>
                 <OrderFormContainer/>
                 </>
                 :
-                <p>Carrito vacio.</p>
+                <p>Carrito vacio :D</p>
             }
             </>
     )

@@ -4,6 +4,7 @@ import Loader from "../Loader/Loader";
 import { database } from "../../firebase/firebase";
 import ItemList from "./ItemList";
 import { useParams } from "react-router";
+import {StyledInfo, StyledItemListContainer} from './ItemListElements';
 
 const ItemListContainer = () => {
     //Estado array de productos
@@ -14,9 +15,15 @@ const ItemListContainer = () => {
     const {id: idParams} = useParams();
 
     const obtenerProductos = () => {
-        const products = database
-            .collection("Catalogo")
-            .where("categoria", '==', idParams)
+        let products = "";
+        if (idParams !== "Todo"){
+                products = database
+                .collection("Catalogo")
+                .where("categoria", '==', idParams)
+        }else{
+                products = database
+                .collection("Catalogo")
+        }
         products.get().then(((query) =>
             setProductosAMostrar(
                 query.docs.map((doc) => {
@@ -51,8 +58,12 @@ const ItemListContainer = () => {
             })
     }, [])
 
-    return (<>
-        {loading ? <Loader/> : productosAMostrar.length ? <ItemList productosAMostrar={productosAMostrar}/> : (<h3>Cargando...</h3>)}
-    </>);
+
+    return (
+        <StyledItemListContainer>
+            {loading ? <Loader/> : productosAMostrar.length ? <ItemList productosAMostrar={productosAMostrar}/> : (<h3>Cargando...</h3>)}
+            <StyledInfo>(HACER CLICK SOBRE EL PRODUCTO DESEADO PARA AGREGAR AL CARRITO)</StyledInfo>
+        </StyledItemListContainer>
+    );
 };
 export default ItemListContainer;

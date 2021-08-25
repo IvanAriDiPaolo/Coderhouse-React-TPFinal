@@ -10,7 +10,7 @@ export const ItemEnCarrito = (props) => {
                 <img src={img} alt="Si" />
                 <h4>{nombre}</h4>
                 <p>Cantidad agregada: {quantity}</p>
-                <p>Precio: ${precio}</p>
+                <p>Precio unitario: ${precio}</p>
                 <button onClick={() =>{removeFromCart(id)}}>Eliminar</button>
         </article>
     )

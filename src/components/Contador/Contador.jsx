@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
-
+import {StyledCounter} from './ContadorElements';
 function Contador({setCount, maxCount}) {
     const [state, setState] = useState(0);
     const handleButtonp = () => {
-        (state<maxCount && state<10 ?setState(state+1) : state == 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " en stock."))
+        (state<maxCount && state<10 ?setState(state+1) : state === 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " disponibles."))
     };
     
     const handleButtonl = () => {
@@ -15,11 +15,11 @@ function Contador({setCount, maxCount}) {
     },[state])
 
     return(
-        <div className='Contador' cant={state}>
+        <StyledCounter className='Contador' cant={state}>
             <button onClick={handleButtonl}> - </button>
             <h2>Cantidad: {state}</h2>
             <button onClick={handleButtonp}> + </button>
-        </div>
+        </StyledCounter>
     );
 };
 export default Contador;

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Cart from './Cart/Cart';
 import {useHistory, Link} from 'react-router-dom';
+import { StyledNavbar } from "./NavbarElements";
 
-const Navbar = (props) => {
+const Navbar = () => {
     let history = useHistory();
 
     function handleChange(e){
@@ -11,22 +12,22 @@ const Navbar = (props) => {
     };
 
     return (
-        <nav className="NavBar">
+        <StyledNavbar>
             <div className="NavBarDiv">
                 <div className="DivTienda">
                     <Link to='/'>
-                        <p className="NavBarUlLiT">Tienda de {props.nombreDeLaTienda}</p>
+                        <p className="NavBarUlLiT">Ropita del Barrio</p>
                     </Link>
                 </div>
                 <div className="DivOtros">
-                    <Link to='/Referencias'>
-                        <p className="NavBarUlLi">Referencias</p>
-                    </Link>
                     <select onChange={handleChange}>
-                        <option blocked selected value="Categorias" disabled>Categorias</option>
+                        <option blocked='true' defaultValue="Categorias" disabled>Categorias</option>
                         <option value="Zapa">Zapas</option>
                         <option value="Ropa">Ropa</option>
                     </select>
+                    <Link to='/Referencias'>
+                        <p className="NavBarUlLi">Referencias</p>
+                    </Link>
                     <Link to='/Contacto'>
                         <p className="NavBarUlLi">Contacto</p>
                     </Link>
@@ -35,7 +36,7 @@ const Navbar = (props) => {
                     </Link>
                 </div>
             </div>
-        </nav>
+        </StyledNavbar>
     )
 };
 export default Navbar;

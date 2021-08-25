@@ -9,6 +9,8 @@ export const DataProvider = ({children}) =>{
 
     const isntInCart = (receivedItem) => cart.filter(item => item.id === receivedItem.id).length === 0;
 
+    const colorPrincipal = `220, 91, 219`;
+
     const addToCart = (receivedItem) =>{
         if (isntInCart(receivedItem)){
             setCart([...cart, receivedItem])
@@ -31,7 +33,7 @@ export const DataProvider = ({children}) =>{
         setTotal(CalcularTotal)
     }, [cart])
 
-    return <Context.Provider value = {{cart, setCart, addToCart, removeFromCart, clear, total}}>
+    return <Context.Provider value = {{cart, setCart, addToCart, removeFromCart, clear, total, colorPrincipal}}>
         {children}
     </Context.Provider>
 }

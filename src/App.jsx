@@ -3,22 +3,23 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import { DataProvider } from './services/Context';
 import './App.css'; 
 import Navbar from './components/Navbar/Navbar';
+import { Home } from './components/Home/Home';
 import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import { Carrito } from './components/Carrito/Carrito';
 import { OpinionesContainer } from './components/Opiniones/OpinionesContainer';
+import {StyledApp} from './AppElements';
 
 const App = () => {
+
   return (
     <DataProvider>
-      <div className="App">
+      <StyledApp>
         <BrowserRouter>
-          <Navbar nombreDeLaTienda="Ropa"/>
+          <Navbar/>
           <Switch>
             <Route exact path='/'>
-              <strong>Este es el home, bienvenido a la página.</strong>
-              <br></br>
-              <strong>Todavía no tiene mucho estilado, pero tranquilo que ya lo va a tener!.</strong>
+              <Home/>
             </Route>
             <Route exact path="/Catalogo/:id">
               <ItemListContainer/>
@@ -35,7 +36,7 @@ const App = () => {
           </Switch>
           <div></div>
         </BrowserRouter>
-      </div>
+      </StyledApp>
     </DataProvider>
   );
 }

@@ -1,6 +1,8 @@
 import React, {useContext, useState} from 'react'
 import { Context } from '../../services/Context';
 import Contador from '../Contador/Contador'
+import {Link} from 'react-router-dom';
+import {StyledItemDetailed, StyledItemDetailedInfo} from "./ItemElements";
 
 const ItemDetail = ({itemToDisplay}) => {
     const {addToCart, removeFromCart} = useContext(Context);
@@ -20,6 +22,7 @@ const ItemDetail = ({itemToDisplay}) => {
 
     const handleSend = () =>{
         addToCart({...itemToDisplay, quantity: count})//se le esta pasando un objeto
+        
     }
     
     const handleRemove = () =>{
@@ -27,28 +30,33 @@ const ItemDetail = ({itemToDisplay}) => {
     }
 
     return (
-        <article>
+        <StyledItemDetailed>
             <img src={itemToDisplay.img} alt="Si" />
-            <h4>{itemToDisplay.nombre}</h4>
-            <h5>Stock: {itemToDisplay.stock}</h5>
-            <button onClick={() => onAdd()}>{terminado ? "Modificar" : "Agregar"}</button>
-            {terminado ?
-                <div>
-                    <p>Usted seleccionó {count} productos</p>
-                    <p>El total de los productos seria de ${count * itemToDisplay.precio}</p>
-                    <p>Esto se adicionará a su carrito, desea confirmar?</p>
-                    <button onClick={() => handleSend()}>Confirmar</button>
-                </div> :
-            <>
-                <Contador
-                inicial= {1}
-                count = {count}
-                setCount = {setCount}
-                maxCount = {itemToDisplay.stock}/>
-                <p>{itemToDisplay.descripcion}</p>
-                <p>Precio: ${itemToDisplay.precio}</p>
-            </>}
-        </article>
+            <button onClick={() => onAdd()}>{terminado ? "Modificar selección" : "Agregar al carrito"}</button>
+            <StyledItemDetailedInfo>
+                <h4>{itemToDisplay.nombre}</h4>
+                {terminado ?
+                    <div>
+                        <p>Usted seleccionó {count} productos</p>
+                        <p id='total'>El total de los productos seria de ${count * itemToDisplay.precio}</p>
+                        <p>Esto se adicionará a su carrito, desea confirmar?</p>
+                        <Link to='/Carrito'>
+                        <button onClick={() => handleSend()}>Confirmar</button>
+                        </Link>
+                    </div> :
+                <>
+                    <p>Stock: {itemToDisplay.stock}</p>
+                    <p>{itemToDisplay.descripcion}</p>
+                    <p id='precio'>Precio: ${itemToDisplay.precio}</p>
+                    <Contador
+                    inicial= {1}
+                    count = {count}
+                    setCount = {setCount}
+                    maxCount = {itemToDisplay.stock}/>
+                </>
+                }
+            </StyledItemDetailedInfo>
+        </StyledItemDetailed>
     )
 }
 export default ItemDetail;
