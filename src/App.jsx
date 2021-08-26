@@ -8,7 +8,7 @@ import ItemListContainer from './components/ItemList/ItemListContainer.jsx';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import { Carrito } from './components/Carrito/Carrito';
 import { OpinionesContainer } from './components/Opiniones/OpinionesContainer';
-import {StyledApp} from './AppElements';
+import {StyledApp, StyledMantenimiento} from './AppElements';
 
 const App = () => {
 
@@ -33,8 +33,10 @@ const App = () => {
             <Route exact path="/Referencias">
               <OpinionesContainer/>
             </Route>
+            <Route exact path="/Contacto">
+              <StyledMantenimiento>Pagina en mantenimiento...</StyledMantenimiento>
+            </Route>
           </Switch>
-          <div></div>
         </BrowserRouter>
       </StyledApp>
     </DataProvider>

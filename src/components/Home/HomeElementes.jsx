@@ -9,7 +9,8 @@ export const StyledHome = styled.div`
     flex-direction: column;
     gap: 5rem;
     h2{
-
+        margin: 1rem;
+        color: #ffffff;
     }
     button{
         font-family: Georgia, "Times New Roman", Times, serif;
@@ -18,6 +19,6 @@ export const StyledHome = styled.div`
         font-size: x-large;
         font-weight: bold;
         position: relative;
-        background-color: #adb7be;
+        background-color: #ffffff;
     }
 `

@@ -6,6 +6,11 @@
 }
 
 body {
-  background-color: #353535;
+  margin: 0%;
+  padding: 0%;
+  background-image: url("./img/background.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 /*# sourceMappingURL=App.css.map */

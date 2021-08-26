@@ -61,7 +61,7 @@ const ItemListContainer = () => {
 
     return (
         <StyledItemListContainer>
-            {loading ? <Loader/> : productosAMostrar.length ? <ItemList productosAMostrar={productosAMostrar}/> : (<h3>Cargando...</h3>)}
+            {loading ? <Loader class='hola'/> : productosAMostrar.length ? <ItemList productosAMostrar={productosAMostrar}/> : (<h3>Cargando...</h3>)}
             <StyledInfo>(HACER CLICK SOBRE EL PRODUCTO DESEADO PARA AGREGAR AL CARRITO)</StyledInfo>
         </StyledItemListContainer>
     );

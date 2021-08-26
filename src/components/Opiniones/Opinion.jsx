@@ -1,12 +1,12 @@
 import React from 'react'
-
+import {StyledOpinion} from './OpinionesElements';
 export const Opinion = ({data : {nombre, opinion, likes, fecha, id}, sumarLike}) => {
     return (
-        <article>
+        <StyledOpinion>
             <strong>{nombre}</strong>
             <p>{opinion}</p>
-            <p>{likes}</p>
+            <p>{likes} LIKES</p>
             <button onClick={() => sumarLike(id)}>Like</button>
-        </article>
+        </StyledOpinion>
     )
 }

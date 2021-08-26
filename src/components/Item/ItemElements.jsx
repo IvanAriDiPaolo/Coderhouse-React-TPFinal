@@ -8,12 +8,15 @@ export const StyledItemListened = styled.article`
     font-size: 1.2rem;
   }
   p{
-    color: #adb7be;
+    color: #ffffff;
     font-size: 1rem;
   }
   h6{
-    color: #adb7be;
+    color: #ffffff;
     font-size: 0.7rem;
+  }
+  img{
+    border-radius: 2rem;
   }
 `
 export const StyledItemDetailed = styled.article`
@@ -25,9 +28,11 @@ export const StyledItemDetailed = styled.article`
     width: 6rem;
     height: 3rem;
     color: #353535;
-    background-color: #adb7be;
+    background-color: #ffffff;
     font-size: 1rem;
     font-weight: bold;
+    border: white solid;
+    border-radius: 2rem;
   }
   display: grid;
   grid-template-columns: 15rem 15rem;
@@ -50,7 +55,7 @@ export const StyledItemDetailedInfo = styled.div`
     color: #222425;
   }
   p{
-    color: #adb7be;
+    color: #ffffff;
     font-size: 1rem;
   }
   div{
@@ -68,7 +73,7 @@ export const StyledItemDetailedInfo = styled.div`
       width: 6rem;
       height: 2rem;
       color: #353535;
-      background-color: #adb7be;
+      background-color: #ffffff;
       font-size: 1rem;
       font-weight: bold;
     }

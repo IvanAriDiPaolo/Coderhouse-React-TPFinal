@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {database} from '../../firebase/firebase'
 import { AgregarOpinion } from './AgregarOpinion';
 import {Opinion} from './Opinion';
+import {StyledOpionionsContainer} from './OpinionesElements';
 
 export const OpinionesContainer = () => {
 
@@ -61,10 +62,11 @@ export const OpinionesContainer = () => {
     }, [])
 
     return (
-            <section>
+        <>
                 <AgregarOpinion agregarOp={agregarOp}/>
+            <StyledOpionionsContainer>
                 {opiniones.map((item) => (<Opinion data={item} key={item.id} sumarLike={sumarLike}/>))}
-                <button onClick={borrarOpiniones}>Borrar opiniones</button>
-            </section>
+            </StyledOpionionsContainer>
+        </>
     )
 }

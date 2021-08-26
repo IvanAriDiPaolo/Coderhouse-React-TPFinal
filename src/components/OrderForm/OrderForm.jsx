@@ -1,8 +1,6 @@
-import React,{useContext, useState} from 'react'
-import { Context } from '../../services/Context';
-
-export const OrderForm = ({crearOrder,checkProductos}) => {
-    const {total} = useContext(Context);
+import React,{useState} from 'react';
+import{StyledOrderForm} from './OrderElements';
+export const OrderForm = ({checkProductos}) => {
     const [vemail, setVemail] = useState("");
     const [verif, setVerif] = useState(false);
     
@@ -32,19 +30,15 @@ export const OrderForm = ({crearOrder,checkProductos}) => {
     }
     
     return (
-        <>
-            <h3>Ingresá tus datos para finalizar la compra:</h3>
+        <StyledOrderForm>
+            <h4>Ingresá tus datos para finalizar la compra:</h4>
             <form onSubmit={enviarForm}>
-                <label>Nombre Completo</label>
-                <input type="text" placeholder="Ingresar Nombre" id="nombre"/>
-                <label>E-Mail</label>
+                <input type="text" placeholder="Nombre y Apellido" id="nombre"/>
                 <input type="text" placeholder="E-Mail" id="email" onChange={verifEmail}/>
                 <input type="text" placeholder="Re ingresar E-Mail" id="cemail" onChange={handleChange}/>
-                <label>Celular</label>
                 <input type="text" placeholder="Celular" id="celular"/>
-                <h4>Total: {total}</h4>
-                {verif ? <button type="submit">Send</button> : <button type="submit" disabled>Send</button> }
+                {verif ? <button type="submit">Send</button> : <button type="submit" disabled>Enviar pedido</button> }
             </form>
-        </>
+        </StyledOrderForm>
     )
 }

@@ -21,7 +21,7 @@ const Navbar = () => {
                 </div>
                 <div className="DivOtros">
                     <select onChange={handleChange}>
-                        <option blocked='true' defaultValue="Categorias" disabled>Categorias</option>
+                        <option defaultValue disabled>Categorias</option>
                         <option value="Zapa">Zapas</option>
                         <option value="Ropa">Ropa</option>
                     </select>

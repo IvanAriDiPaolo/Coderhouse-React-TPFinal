@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
 export const StyledItemListContainer = styled.div`
-  margin: 1rem;
+  margin: 2rem;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 export const StyledItemList = styled.div`
@@ -16,5 +22,5 @@ export const StyledItemList = styled.div`
 export const StyledInfo = styled.h6`
     display: flex;
     justify-content: center;
-    color: #adb7be;
+    color: #ffffff;
   `
