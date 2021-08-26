@@ -38,7 +38,7 @@ export const DataProvider = ({children}) =>{
         setTotal(CalcularTotal);
     }, [cart])
 
-    return <Context.Provider value = {{cart, setCart, addToCart, removeFromCart, clear, total, colorPrincipal, totalElementos}}>
+    return <Context.Provider value = {{cart, setCart, addToCart, removeFromCart, clear, total, colorPrincipal, totalElementos, setTotalElementos}}>
         {children}
     </Context.Provider>
 }

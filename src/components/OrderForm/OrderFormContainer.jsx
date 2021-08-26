@@ -5,7 +5,7 @@ import { Context } from '../../services/Context';
 import firebase from "firebase/app";
 
 export const OrderFormContainer = () => {
-    const {total, cart, clear} = useContext(Context);
+    const {total, cart, clear, setTotalElementos} = useContext(Context);
 
     const checkProductos = async (nombre, email, celular) => {
         let productos = database.collection("Catalogo").where(
@@ -32,6 +32,7 @@ export const OrderFormContainer = () => {
                 crearOrder(nombre, email, celular);
                 batch.commit().then(()=>{
                     clear();
+                    setTotalElementos(0);
                 })
             }else{
                 alert("Sin stock!! \n Revisar la consola para mas detalle.")
