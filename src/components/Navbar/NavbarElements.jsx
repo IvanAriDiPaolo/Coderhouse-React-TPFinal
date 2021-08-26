@@ -36,6 +36,19 @@ p {
                 position: relative;
                 top: 0.8rem;
                 width: 2.3rem;
+                z-index: 6;
+            }
+            #contador{
+                position: absolute;
+                height: 2rem;
+                width: 2rem;
+                border-radius: 100%;
+                color: white;
+                background-color: black;
+                right: 1.2rem;
+                top: 2rem;
+                z-index: 5;
+
             }
         }
     }

@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import Cart from './Cart/Cart';
 import {useHistory, Link} from 'react-router-dom';
 import { StyledNavbar } from "./NavbarElements";
+import { Context } from '../../services/Context';
 
 const Navbar = () => {
+    const {totalElementos} = useContext(Context);
     let history = useHistory();
-
+    
     function handleChange(e){
         history.push(`/Catalogo/${e.target.value}`);
         e.target.value = "Categorias";
@@ -34,6 +36,7 @@ const Navbar = () => {
                     </Link>
                     <Link to='/Carrito'>
                         <Cart/>
+                        <p id="contador">{totalElementos}</p>
                     </Link>
                 </div>
             </div>
