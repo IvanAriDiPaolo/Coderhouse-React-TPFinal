@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import {StyledCounter} from './ContadorElements';
 function Contador({setCount, maxCount}) {
-    const [state, setState] = useState(0);
+    const [contador, setContador] = useState(0);
     const handleButtonp = () => {
-        (state<maxCount && state<10 ?setState(state+1) : state === 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " disponibles."))
+        (contador<maxCount && contador<10 ?setContador(contador+1) : contador === 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " disponibles."))
     };
     
     const handleButtonl = () => {
-        (state>0?setState(state-1):alert("Por favor, seleccione una cantidad valida de productos."))
+        (contador>0?setContador(contador-1):alert("Por favor, seleccione una cantidad valida de productos."))
     };
 
-    useEffect(() =>{
-        setCount(state);
-    },[state])
+    useEffect(() => {
+        setCount(contador);
+    }, [contador])// eslint-disable-line react-hooks/exhaustive-deps
 
     return(
-        <StyledCounter className='Contador' cant={state}>
+        <StyledCounter className='Contador' cant={contador}>
             <button onClick={handleButtonl}> - </button>
-            <h2>Cantidad: {state}</h2>
+            <h2>Cantidad: {contador}</h2>
             <button onClick={handleButtonp}> + </button>
         </StyledCounter>
     );

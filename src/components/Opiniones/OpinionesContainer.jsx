@@ -46,14 +46,14 @@ export const OpinionesContainer = () => {
         setOpiniones(opinionesFetcheadas)
     };
     
-    const borrarOpiniones = async () => {
-        let opinionesRemotas = database.collection("Opiniones")
-        const query = await opinionesRemotas.get();
-        const batch = database.batch();
-        query.docs.forEach((op) => batch.delete(op.ref));
-        batch.commit();
-        obtenerOpiniones();
-    }
+    // const borrarOpiniones = async () => {
+    //     let opinionesRemotas = database.collection("Opiniones")
+    //     const query = await opinionesRemotas.get();
+    //     const batch = database.batch();
+    //     query.docs.forEach((op) => batch.delete(op.ref));
+    //     batch.commit();
+    //     obtenerOpiniones();
+    // }
 
 
 
