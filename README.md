@@ -1,6 +1,6 @@
 # Ropita del Barrio
 
-Ropa económica y de estilo para la gente del barrio.
+Primer proyecto realizado con ReactJS, llevado a cabo con ejemplo de venta de ropa.
 
 ## Librerías usadas:
 

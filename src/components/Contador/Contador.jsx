@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {StyledCounter} from './ContadorElements';
 function Contador({setCount, maxCount}) {
     const [contador, setContador] = useState(0);
+    
     const handleButtonp = () => {
         (contador<maxCount && contador<10 ?setContador(contador+1) : contador === 10 ? alert("Se llegó al límite de 10 productos permitidos por compra.") :alert("No hay stock suficiente.\nActualmente hay " + maxCount + " disponibles."))
     };

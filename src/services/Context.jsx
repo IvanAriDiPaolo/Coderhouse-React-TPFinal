@@ -29,7 +29,10 @@ export const DataProvider = ({children}) =>{
         setTotalElementos(totalElementos - cant);
     }
 
-    const clear = () => setCart([]);
+    const clear = () => {
+        setCart([]);
+        setTotalElementos(0);    
+    };
 
     useEffect(() => {
         let CalcularTotal = 0;
