@@ -22,7 +22,6 @@ const ItemDetailContainer = () => {
         ))
     }
 
-
     const getSelectedItems = () => {
         const result = itemsEnStock.find((Item) => Item.id.toString() === idParams)
         setItemToDisplay(result)

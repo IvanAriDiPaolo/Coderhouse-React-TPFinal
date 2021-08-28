@@ -31,6 +31,7 @@ export const OrderForm = ({checkProductos}) => {
     
     return (
         <StyledOrderForm>
+            <br />
             <h4>Ingresá tus datos para finalizar la compra:</h4>
             <form onSubmit={enviarForm}>
                 <input type="text" placeholder="Nombre y Apellido" id="nombre"/>

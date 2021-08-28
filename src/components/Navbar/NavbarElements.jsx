@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledNavbar = styled.nav`
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300&display=swap');
 min-height: 5rem;
 background-color: #353535;
 text-align: center;
 text-decoration: none;
 box-sizing: content-box;
-border-end-end-radius: 3rem;
 p {
-        font-family: 'Indie Flower', cursive;
+        font-family: 'Exo 2', sans-serif;
         display: block;
         bottom: 1rem;
         font-size: 2rem;
@@ -56,7 +55,7 @@ p {
         background-color: #353535;
         border-color:  #353535;
         color: #ffffff;
-        font-family: 'Indie Flower', cursive;
+        font-family: 'Exo 2', sans-serif;
         font-size: 2rem;
     }
 `
