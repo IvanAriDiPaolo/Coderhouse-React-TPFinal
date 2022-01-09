@@ -11,7 +11,7 @@ Primer proyecto realizado con ReactJS, llevado a cabo con ejemplo de venta de ro
 
 ### Como levantar el proyecto:
 
-1- Clonar el repositorio con el comando `it clone https://github.com/ivandipa8/React-App-Final.git`
+1- Clonar el repositorio con el comando `git clone https://github.com/ivandipa8/React-App-Final.git`
 
 2- Obtener node_modules con el comando `npm i`
 
