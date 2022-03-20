@@ -1,8 +1,8 @@
-# Ropita del Barrio
+# E-Commerce - ReactJS Basico
 
-Primer proyecto realizado con ReactJS, llevado a cabo con ejemplo de venta de ropa.
+Proyecto realizado con ReactJS, llevado a cabo con ejemplo de venta de ropa.
 
-## Librerías usadas:
+## Tecnologías utilizadas:
 
 - React
 - Firebase
